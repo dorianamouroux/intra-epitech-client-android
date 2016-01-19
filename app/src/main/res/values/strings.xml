@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EpiAndroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="logMessage">Log here</string>
+</resources>
