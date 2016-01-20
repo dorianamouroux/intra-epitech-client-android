@@ -2,4 +2,5 @@
     <string name="app_name">EpiAndroid</string>
     <string name="action_settings">Settings</string>
     <string name="logMessage">Log here</string>
+    <string name="afterLogin">You are now logged in</string>
 </resources>

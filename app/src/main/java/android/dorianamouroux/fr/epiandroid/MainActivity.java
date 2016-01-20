@@ -1,6 +1,7 @@
 package android.dorianamouroux.fr.epiandroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -41,11 +42,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    private void afterConnexion() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
+        startActivity(intent);
+        this.finish();
+    }
+
     public void logIn(View view) {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         this._login = (EditText)findViewById(R.id.login);
         this._password = (EditText)findViewById(R.id.password);
+
         IntraAPI.login(
                 this._login.getText().toString(),
                 this._password.getText().toString(),
@@ -57,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Object token = response.get("token");
                             IntraAPI.setToken(token.toString());
-                            CharSequence text = "You have successfully logged in";
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
+                            afterConnexion();
                         }
                         catch (JSONException e) {
                             CharSequence text = "Unknow error";
