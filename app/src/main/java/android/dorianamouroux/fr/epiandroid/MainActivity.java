@@ -46,30 +46,38 @@ public class MainActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
         this._login = (EditText)findViewById(R.id.login);
         this._password = (EditText)findViewById(R.id.password);
-        params.put("login", this._login.getText().toString());
-        params.put("password", this._password.getText().toString());
-        Log.v("bitch", params.toString());
-        client.post("https://epitech-api.herokuapp.com/login", params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Context context = getApplicationContext();
-                CharSequence text = "You have successfully logged in";
-                int duration = Toast.LENGTH_SHORT;
+        IntraAPI.login(
+                this._login.getText().toString(),
+                this._password.getText().toString(),
+                new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        Context context = getApplicationContext();
+                        int duration = Toast.LENGTH_SHORT;
+                        try {
+                            Object token = response.get("token");
+                            IntraAPI.setToken(token.toString());
+                            CharSequence text = "You have successfully logged in";
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+                        catch (JSONException e) {
+                            CharSequence text = "Unknow error";
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+                    }
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Error with login (" + errorResponse.toString() + ")";
+                        int duration = Toast.LENGTH_SHORT;
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Context context = getApplicationContext();
-                CharSequence text = "Error with login";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                });
     }
 
 }
