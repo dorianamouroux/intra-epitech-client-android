@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logIn(View view) {
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
         this._login = (EditText)findViewById(R.id.login);
         this._password = (EditText)findViewById(R.id.password);
 
@@ -61,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
                 new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        Context context = getApplicationContext();
-                        int duration = Toast.LENGTH_SHORT;
                         try {
                             Object token = response.get("token");
                             IntraAPI.setToken(token.toString());
                             afterConnexion();
                         }
                         catch (JSONException e) {
+                            Context context = getApplicationContext();
+                            int duration = Toast.LENGTH_SHORT;
                             CharSequence text = "Unknow error";
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
