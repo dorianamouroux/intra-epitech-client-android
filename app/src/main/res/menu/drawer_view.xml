@@ -7,6 +7,11 @@
         <!--android:title="@string/"/>-->
     <!-- EXEMPLE -->
 
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_face_black"
+        android:title="@string/action_profile"/>
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/license"

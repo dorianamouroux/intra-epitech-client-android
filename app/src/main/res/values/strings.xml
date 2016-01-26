@@ -4,19 +4,9 @@
     <string name="logMessage">Log here</string>
     <string name="afterLogin">You are now logged in</string>
 
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
-
     <string name="drawerOpen">Open navigation drawer</string>
     <string name="drawerClose">Close navigation drawer</string>
 
     <string name="action_license">License</string>
+    <string name="action_profile">Profile</string>
 </resources>
