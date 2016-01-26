@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- EXEMPLE -->
+    <!--<item-->
+        <!--android:id="@+id/"-->
+        <!--android:icon="@drawable/"-->
+        <!--android:title="@string/"/>-->
+    <!-- EXEMPLE -->
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/license"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/action_license"/>
+    </group>
+</menu>
