@@ -11,6 +11,14 @@
         android:id="@+id/profile"
         android:icon="@drawable/ic_face_black"
         android:title="@string/action_profile"/>
+    <item
+        android:id="@+id/schedule"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/action_schedule"/>
+    <item
+        android:id="@+id/module"
+        android:icon="@drawable/ic_module"
+        android:title="@string/action_module"/>
 
     <group android:checkableBehavior="single">
         <item

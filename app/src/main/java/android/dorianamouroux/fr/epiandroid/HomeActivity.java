@@ -1,5 +1,7 @@
 package android.dorianamouroux.fr.epiandroid;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,18 +22,25 @@ public class HomeActivity extends AppCompatActivity {
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            // Select item in the NavigationDrawer
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.license:
                         break;
-                    // ICI DODO !!!!
+                    case R.id.profile:
+                        break;
+                    case R.id.schedule:
+                        break;
+                    case R.id.module:
+                        break;
                 }
                 drawerLayout.closeDrawers();
                 return true;
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -41,4 +50,5 @@ public class HomeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
