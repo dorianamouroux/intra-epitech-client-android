@@ -2,6 +2,7 @@ package android.dorianamouroux.fr.epiandroid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import cz.msebera.android.httpclient.Header;
 public class MainActivity extends AppCompatActivity {
     protected EditText _login;
     protected EditText _password;
+    protected CheckBox _ch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        _ch=(CheckBox)findViewById(R.id.checkBox);
 
     }
 
@@ -45,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     private void afterConnexion() {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
+        if (_ch.isChecked())
+        {
+            Log.v("OK", "c'est cool");
+        }
         startActivity(intent);
         this.finish();
     }
@@ -86,3 +95,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
