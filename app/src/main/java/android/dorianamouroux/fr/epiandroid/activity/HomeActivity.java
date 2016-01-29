@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 
 import android.support.design.widget.NavigationView;
 
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 
@@ -21,11 +22,13 @@ import android.dorianamouroux.fr.epiandroid.fragment.ProfileFragment;
 import android.dorianamouroux.fr.epiandroid.fragment.ScheduleFragment;
 
 import android.dorianamouroux.fr.epiandroid.R;
+import android.view.View;
 
 
 public class HomeActivity extends AppCompatActivity {
-    private DrawerLayout    _drawerLayout;
-    private NavigationView  _navigationView;
+    private DrawerLayout            _drawerLayout;
+    private NavigationView          _navigationView;
+    private ActionBarDrawerToggle   _drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         _drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        _drawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                _drawerLayout,         /* DrawerLayout object */
+                R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
+                R.string.drawerOpen,  /* "open drawer" description */
+                R.string.drawerClose  /* "close drawer" description */
+        ) {};
 
         _navigationView = (NavigationView) findViewById(R.id.nav_view);
         _navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -53,9 +64,14 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        _drawerLayout.setDrawerListener(_drawerToggle);
+        getSupportActionBar().setHomeButtonEnabled(true);
+    	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
+
+  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

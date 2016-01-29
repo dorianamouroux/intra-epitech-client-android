@@ -3,22 +3,28 @@ package android.dorianamouroux.fr.epiandroid.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import android.preference.PreferenceActivity;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.util.Log;
+
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import android.dorianamouroux.fr.epiandroid.HomeActivity;
 import android.dorianamouroux.fr.epiandroid.IntraAPI;
 import android.dorianamouroux.fr.epiandroid.R;
 
@@ -98,41 +104,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-//public class LoginPreferences {
-//    public static String USER_PREFS = "UserPrefs";
-//    public static String USER_LOGEDIN = "user_logedin";
-//    public static String USER_LOGIN = "user_login";
-//    public static String USER_PASSWD = "user_passwd";
-//
-//    public static boolean isUserLogedIn(Context context) {
-//        SharedPreferences sharedPreferences = context.getSharedPreferences(USER_PREFS, 0);
-//        return sharedPreferences.getBoolean(USER_LOGEDIN, false);
-//    }
-//
-//    public static String getLogin(Context context) {
-//        SharedPreferences sharedPreferences = context.getSharedPreferences(USER_PREFS, 0);
-//        return sharedPreferences.getString(USER_LOGIN, null);
-//    }
-//
-//    public static String getPassword(Context context) {
-//        SharedPreferences sharedPreferences = context.getSharedPreferences(USER_PREFS, 0);
-//        return sharedPreferences.getString(USER_PASSWD, null);
-//    }
-//
-//    public static void loginInfo(Context context, String login, String pwd) {
-//        SharedPreferences.Editor editor = context.getSharedPreferences(USER_PREFS, 0).edit();
-//        editor.putString(USER_LOGIN, login);
-//        editor.putString(USER_PASSWD, pwd);
-//        editor.putBoolean(USER_LOGEDIN, true);
-//        editor.apply();
-//    }
-//
-//    public static void logout(Context context) {
-//        SharedPreferences.Editor editor = context.getSharedPreferences(USER_PREFS, 0).edit();
-//        editor.remove(USER_LOGIN);
-//        editor.remove(USER_PASSWD);
-//        editor.remove(USER_LOGEDIN);
-//        editor.apply();
-//    }
-//}
