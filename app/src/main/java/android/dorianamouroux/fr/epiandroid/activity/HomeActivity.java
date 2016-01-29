@@ -55,10 +55,13 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.profile:
                         OnFragProfileSelected();
+                        break;
                     case R.id.schedule:
                         OnFragScheduleSelected();
+                        break;
                     case R.id.module:
                         OnFragModuleSelected();
+                        break;
                 }
                 _drawerLayout.closeDrawers();
                 return true;
