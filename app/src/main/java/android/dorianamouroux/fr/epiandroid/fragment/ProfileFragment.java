@@ -1,11 +1,16 @@
-package android.dorianamouroux.fr.epiandroid;
+package android.dorianamouroux.fr.epiandroid.fragment;
 
 import android.os.Bundle;
+
 import android.support.annotation.Nullable;
+
 import android.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.dorianamouroux.fr.epiandroid.R;
 
 public class ProfileFragment extends Fragment {
 

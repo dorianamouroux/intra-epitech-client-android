@@ -1,15 +1,27 @@
-package android.dorianamouroux.fr.epiandroid;
+package android.dorianamouroux.fr.epiandroid.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+
 import android.support.design.widget.NavigationView;
+
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+
 import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import android.view.MenuItem;
+
+import android.dorianamouroux.fr.epiandroid.fragment.ModuleFragment;
+import android.dorianamouroux.fr.epiandroid.fragment.ProfileFragment;
+import android.dorianamouroux.fr.epiandroid.fragment.ScheduleFragment;
+
+import android.dorianamouroux.fr.epiandroid.R;
+
 
 public class HomeActivity extends AppCompatActivity {
     private DrawerLayout    _drawerLayout;
