@@ -42,11 +42,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (isSave(this)) {
+            logIn(findViewById(android.R.id.content));
+        }
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        _ch=(CheckBox)findViewById(R.id.checkBox);
+        _ch = (CheckBox)findViewById(R.id.checkBox);
 
     }
 
@@ -60,21 +63,49 @@ public class MainActivity extends AppCompatActivity {
     private void afterConnexion() {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
-        if (_ch.isChecked())
-        {
-            Log.v("OK", "c'est cool");
+        if (_ch.isChecked()) {
+            saveUserInfo(this);
         }
         startActivity(intent);
         this.finish();
     }
 
-    public void logIn(View view) {
-        this._login = (EditText)findViewById(R.id.login);
-        this._password = (EditText)findViewById(R.id.password);
+    private void saveUserInfo(Context context) {
+        String login = _login.getText().toString();
+        String password = _password.getText().toString();
+        SharedPreferences.Editor editor = context.getSharedPreferences(getString(
+                R.string.preference_file_key), Context.MODE_PRIVATE).edit();
+        editor.putString(getString(R.string.user_login), login);
+        editor.putString(getString(R.string.user_password), password);
+        editor.putBoolean(getString(R.string.user_has_save), true);
+        editor.apply();
+    }
 
+    private boolean isSave(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(getString(
+                R.string.preference_file_key), Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean(getString(R.string.user_has_save), false);
+    }
+
+    public void logIn(View view) {
+        final String login;
+        final String password;
+
+        if (isSave(this)) {
+            SharedPreferences sharedPreferences = this.getSharedPreferences(getString(
+                    R.string.preference_file_key), Context.MODE_PRIVATE);
+            login = sharedPreferences.getString(getString(R.string.user_login), null);
+            password = sharedPreferences.getString(getString(R.string.user_password), null);
+        }
+        else {
+            this._login = (EditText)findViewById(R.id.login);
+            this._password = (EditText)findViewById(R.id.password);
+            login = this._login.getText().toString();
+            password = this._password.getText().toString();
+        }
         IntraAPI.login(
-                this._login.getText().toString(),
-                this._password.getText().toString(),
+                login,
+                password,
                 new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
