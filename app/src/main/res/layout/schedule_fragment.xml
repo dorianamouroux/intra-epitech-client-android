@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="android.dorianamouroux.fr.epiandroid.fragment.ScheduleFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Schedule View"
-        android:id="@+id/textView3"
-        android:layout_marginTop="73dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:contentDescription="@string/prev_desc"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="start|top"
+            android:background="@drawable/ic_play_circle_filled_black"
+            android:rotation="180"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnPrevDay"
+            android:scaleType="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/schedule_today"
+            android:gravity="center"
+            android:ems="10"
+            android:id="@+id/planningDate"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_toRightOf="@+id/btnPrevDay"
+            android:layout_toEndOf="@+id/btnPrevDay"
+            android:layout_alignBottom="@+id/btnPrevDay"
+            android:layout_alignTop="@+id/btnPrevDay"
+            android:layout_toLeftOf="@+id/btnNextDay"
+            android:layout_toStartOf="@+id/btnNextDay" />
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:contentDescription="@string/next_desc"
+            android:background="@drawable/ic_play_circle_filled_black"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnNextDay"
+            android:layout_alignTop="@+id/planningDate"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:id="@+id/activityList"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -16,9 +16,10 @@ import cz.msebera.android.httpclient.Header;
  */
 public class IntraAPI {
     private static String _token;
+    private static String _url = "https://epitech-api.herokuapp.com/";
 
     public static void setToken(String token) {
-        IntraAPI._token = token;
+        _token = token;
     }
 
     public static void login(String login, String password, JsonHttpResponseHandler callback) {
@@ -28,7 +29,18 @@ public class IntraAPI {
         params.put("login", login);
         params.put("password", password);
 
-        client.post("https://epitech-api.herokuapp.com/login", params, callback);
+        client.post(_url + "login", params, callback);
+    }
+
+    public static void planning(String start, String end, JsonHttpResponseHandler callback) {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("token", _token);
+        params.put("start", start);
+        params.put("end", end);
+
+        client.get(_url + "planning/", params, callback);
     }
 
 }
