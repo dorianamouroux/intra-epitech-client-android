@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.dorianamouroux.fr.epiandroid.fragment.ModuleFragment;
 import android.dorianamouroux.fr.epiandroid.fragment.ProfileFragment;
 import android.dorianamouroux.fr.epiandroid.fragment.ScheduleFragment;
+import android.dorianamouroux.fr.epiandroid.fragment.GradeFragment;
 
 import android.dorianamouroux.fr.epiandroid.R;
 import android.view.View;
@@ -34,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        OnFragProfileSelected();
 
         _drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -51,8 +54,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.license:
-                        break;
                     case R.id.profile:
                         OnFragProfileSelected();
                         break;
@@ -62,6 +63,9 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.module:
                         OnFragModuleSelected();
                         break;
+                    case R.id.grade:
+                        OnFragGradeSelected();
+                        break;
                 }
                 _drawerLayout.closeDrawers();
                 return true;
@@ -69,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         _drawerLayout.setDrawerListener(_drawerToggle);
+        _drawerToggle.syncState();
         getSupportActionBar().setHomeButtonEnabled(true);
     	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -105,4 +110,10 @@ public class HomeActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public void OnFragGradeSelected() {
+        GradeFragment _newFragment = new GradeFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, _newFragment);
+        transaction.commit();
+    }
 }
