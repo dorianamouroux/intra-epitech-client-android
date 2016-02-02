@@ -7,23 +7,31 @@
         <!--android:title="@string/"/>-->
     <!-- EXEMPLE -->
 
-    <item
-        android:id="@+id/profile"
-        android:icon="@drawable/ic_face_black"
-        android:title="@string/action_profile"/>
-    <item
-        android:id="@+id/schedule"
-        android:icon="@drawable/ic_calendar"
-        android:title="@string/action_schedule"/>
-    <item
-        android:id="@+id/module"
-        android:icon="@drawable/ic_module"
-        android:title="@string/action_module"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_face_black"
+            android:title="@string/action_profile"/>
+    </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/license"
-            android:icon="@drawable/ic_info_outline_black_24dp"
-            android:title="@string/action_license"/>
+            android:id="@+id/schedule"
+            android:icon="@drawable/ic_calendar"
+            android:title="@string/action_schedule"/>
     </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/module"
+            android:icon="@drawable/ic_module"
+            android:title="@string/action_module"/>
+
+    </group>
+    <!--<group android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/license"-->
+            <!--android:icon="@drawable/ic_info_outline_black_24dp"-->
+            <!--android:title="@string/action_license"/>-->
+    <!--</group>-->
 </menu>

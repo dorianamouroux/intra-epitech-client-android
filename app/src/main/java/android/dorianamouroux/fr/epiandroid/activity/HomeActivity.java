@@ -51,8 +51,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.license:
-                        break;
                     case R.id.profile:
                         OnFragProfileSelected();
                         break;
