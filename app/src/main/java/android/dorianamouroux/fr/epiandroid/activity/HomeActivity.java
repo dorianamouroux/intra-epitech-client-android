@@ -36,6 +36,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        OnFragProfileSelected();
+
         _drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         _drawerToggle = new ActionBarDrawerToggle(
@@ -71,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         _drawerLayout.setDrawerListener(_drawerToggle);
+        _drawerToggle.syncState();
         getSupportActionBar().setHomeButtonEnabled(true);
     	getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
