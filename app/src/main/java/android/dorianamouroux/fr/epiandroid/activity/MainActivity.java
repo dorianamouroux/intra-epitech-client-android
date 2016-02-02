@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Object token = response.get("token");
                             IntraAPI.setToken(token.toString());
+                            IntraAPI.setLogin(login);
                             afterConnexion();
                         } catch (JSONException e) {
                             Context context = getApplicationContext();
