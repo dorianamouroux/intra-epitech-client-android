@@ -26,12 +26,21 @@
             android:id="@+id/module"
             android:icon="@drawable/ic_module"
             android:title="@string/action_module"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/grade"
+            android:icon="@drawable/ic_grade"
+            android:title="@string/action_grade"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/module"
+            android:icon="@drawable/ic_module"
+            android:title="@string/action_module"/>
 
     </group>
-    <!--<group android:checkableBehavior="single">-->
-        <!--<item-->
-            <!--android:id="@+id/license"-->
-            <!--android:icon="@drawable/ic_info_outline_black_24dp"-->
-            <!--android:title="@string/action_license"/>-->
-    <!--</group>-->
+
 </menu>
