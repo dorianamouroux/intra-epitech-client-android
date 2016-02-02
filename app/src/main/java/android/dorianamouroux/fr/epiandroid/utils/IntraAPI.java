@@ -7,6 +7,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
@@ -40,7 +42,21 @@ public class IntraAPI {
         params.put("start", start);
         params.put("end", end);
 
-        client.get(_url + "planning/", params, callback);
+        client.get(_url + "planning", params, callback);
+    }
+
+    public static void marks(JsonHttpResponseHandler callback) {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams("token", _token);
+
+        client.get(_url + "marks", params, callback);
+    }
+
+    public static void userModules(JsonHttpResponseHandler callback) {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams("token", _token);
+
+        client.get(_url + "modules", params, callback);
     }
 
 }

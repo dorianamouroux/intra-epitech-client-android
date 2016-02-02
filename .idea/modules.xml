@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EpiAndroid.iml" filepath="$PROJECT_DIR$/EpiAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intra-epitech-client-android.iml" filepath="$PROJECT_DIR$/intra-epitech-client-android.iml" />
     </modules>
   </component>
 </project>

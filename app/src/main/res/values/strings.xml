@@ -12,10 +12,12 @@
     <string name="user_password">user_password</string>
     <string name="user_has_save">user_has_save</string>
 
+    <!-- Navigation Drawer -->
     <string name="action_license">License</string>
     <string name="action_profile">Profile</string>
     <string name="action_schedule">Schedule</string>
     <string name="action_module">Modules</string>
+    <string name="action_grade">Notes</string>
 
     <string name="prev_desc">Prev Button</string>
     <string name="next_desc">Next Button</string>

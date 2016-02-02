@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.dorianamouroux.fr.epiandroid.fragment.ModuleFragment;
 import android.dorianamouroux.fr.epiandroid.fragment.ProfileFragment;
 import android.dorianamouroux.fr.epiandroid.fragment.ScheduleFragment;
+import android.dorianamouroux.fr.epiandroid.fragment.GradeFragment;
 
 import android.dorianamouroux.fr.epiandroid.R;
 import android.view.View;
@@ -61,6 +62,9 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.module:
                         OnFragModuleSelected();
+                        break;
+                    case R.id.grade:
+                        OnFragGradeSelected();
                         break;
                 }
                 _drawerLayout.closeDrawers();
@@ -105,4 +109,10 @@ public class HomeActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public void OnFragGradeSelected() {
+        GradeFragment _newFragment = new GradeFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, _newFragment);
+        transaction.commit();
+    }
 }
