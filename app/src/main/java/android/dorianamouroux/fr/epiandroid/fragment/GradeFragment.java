@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import java.util.ArrayList;
 
@@ -57,6 +58,8 @@ public class GradeFragment extends Fragment {
     // selected
     private int selectedSemester = 1;
 
+    private ProgressBar progressBar;
+
     /*
     ** public methode
     */
@@ -96,9 +99,9 @@ public class GradeFragment extends Fragment {
                     for (int i = 0; i < notes.length(); ++i) {
                         _addMark(notes.getJSONObject(i));
                     }
+                    progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBar);
+                    progressBar.setVisibility(View.GONE);
                     setSpinner();
-//                    setModuleList();
-                    Log.i(TAG, "This is my beautiful json: " + _semesters.toString());
                 } catch (JSONException e) {
                     Log.i(TAG, e.toString());
                 }
@@ -177,6 +180,7 @@ public class GradeFragment extends Fragment {
         Log.i(TAG, semesterSpinner.toString());
 
         Spinner spinner = (Spinner) getView().findViewById(R.id.semester_selector);
+        spinner.setVisibility(View.VISIBLE);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_dropdown_item, semesterSpinner);
         spinner.setAdapter(adapter);
 
@@ -184,6 +188,7 @@ public class GradeFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 Log.i(TAG, "semestre sélectionné: " + pos + 1);
                 selectedSemester = pos + 1;
+
                 setModuleList();
             }
 

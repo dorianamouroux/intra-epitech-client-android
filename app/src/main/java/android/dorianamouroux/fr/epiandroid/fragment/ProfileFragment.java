@@ -106,7 +106,10 @@ public class ProfileFragment extends Fragment {
 
             // set log time
             logTime = (TextView)getView().findViewById(R.id.logTime);
-            logTime.setText("Log time this week : " + _profile.getJSONObject("nsstat").getInt("active"));
+            logTime.setText("Log time this week : "
+                    + _profile.getJSONObject("nsstat").getInt("active")
+                    + " hours"
+            );
 
         } catch (Exception e) {
             errorException();

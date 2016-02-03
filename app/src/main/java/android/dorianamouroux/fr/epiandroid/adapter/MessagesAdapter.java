@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,9 +35,21 @@ public class MessagesAdapter extends ArrayAdapter<Message> {
         // Lookup view for data population
         TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         TextView tvContent = (TextView) convertView.findViewById(R.id.tvContent);
+
+        String image = message.getImage();
+
+        if (image != "null") {
+            ImageView imageView = (ImageView) convertView.findViewById(R.id.ivImage);
+            Picasso.with(getContext())
+                    .load(image)
+                    .into(imageView);
+        }
+
         // Populate the data into the template view using the data object
         tvTitle.setText(Html.fromHtml(message.getTitle()));
         tvContent.setText(Html.fromHtml(message.getContent()));
+
+
         // Return the completed view to render on screen
         return convertView;
     }
