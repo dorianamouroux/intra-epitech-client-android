@@ -8,6 +8,8 @@
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_centerVertical="true"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:gravity="center"
     android:paddingLeft="25dp"
     android:paddingRight="25dp" />
 </RelativeLayout>
