@@ -1,29 +1,39 @@
 package android.dorianamouroux.fr.epiandroid.item;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+
 /**
  * Created by patoche on 1/30/16.
  */
 public class Activity {
 
-    private String _title;
-    private String _start;
-    private String _end;
-    private String _registered;
-    private String _scolaryear;
-    private String _codemodule;
-    private String _codeinstance;
-    private String _codeacti;
-    private String _codeevent;
-    private String _room;
+    private String  _title;
+    private String  _start;
+    private String  _end;
+    private String  _registered;
+    private String  _scolaryear;
+    private String  _codemodule;
+    private String  _codeinstance;
+    private String  _codeacti;
+    private String  _codeevent;
+    private String  _room;
+    private String  _hourStart;
+    private String  _hourEnd;
 
     public void setTitle(String title) {
         _title = title;
     }
     public void setStart(String start) {
         _start = start;
+        setHourStart(start);
     }
     public void setEnd(String end) {
         _end = end;
+        setHourEnd(end);
     }
     public void setRegistered(String registered) {
         _registered = registered;
@@ -45,6 +55,12 @@ public class Activity {
     }
     public void setRoom(String room) {
         _room = room;
+    }
+    private void setHourStart(String start) {
+        _hourStart = start.split("\\s+")[1];
+    }
+    private void setHourEnd(String end) {
+        _hourEnd = end.split("\\s+")[1];
     }
 
     public String getStart() {
@@ -77,5 +93,10 @@ public class Activity {
     public String getRoom() {
         return _room;
     }
-
+    public String getHourStart() {
+        return _hourStart;
+    }
+    public String getHourEnd() {
+        return _hourEnd;
+    }
 }
