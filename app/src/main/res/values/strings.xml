@@ -14,7 +14,7 @@
 
     <!-- Navigation Drawer -->
     <string name="action_license">License</string>
-    <string name="action_profile">Profile</string>
+    <string name="action_profile">Home</string>
     <string name="action_schedule">Schedule</string>
     <string name="action_module">Modules</string>
     <string name="action_grade">Notes</string>

@@ -36,6 +36,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        OnFragProfileSelected();
+
         _drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         _drawerToggle = new ActionBarDrawerToggle(
@@ -57,9 +59,6 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.schedule:
                         OnFragScheduleSelected();
-                        break;
-                    case R.id.module:
-                        OnFragModuleSelected();
                         break;
                     case R.id.grade:
                         OnFragGradeSelected();
