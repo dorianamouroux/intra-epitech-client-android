@@ -54,13 +54,20 @@ public class Activity {
         _codeevent = codeevent;
     }
     public void setRoom(String room) {
-        _room = room;
+        if (room == "null") {
+            _room = "No Room";
+            return;
+        }
+
+        _room = room.split("\\/")[room.split("\\/").length - 1].split("\"")[0];
     }
     private void setHourStart(String start) {
-        _hourStart = start.split("\\s+")[1];
+        String tmp = start.split("\\s+")[1].split(":")[0];
+        _hourStart = tmp + ":" + start.split(":")[1];
     }
     private void setHourEnd(String end) {
-        _hourEnd = end.split("\\s+")[1];
+        String tmp = end.split("\\s+")[1].split(":")[0];
+        _hourEnd = tmp + ":" + end.split(":")[1];
     }
 
     public String getStart() {
