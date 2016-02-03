@@ -13,12 +13,14 @@ import java.util.Objects;
 public class Message {
     private String _title;
     private String _content;
+    private String _image;
 
     public Message(Object message) {
         JSONObject jsonMessage = (JSONObject) message;
         try {
             this._title = jsonMessage.getString("title");
             this._content = jsonMessage.getString("content");
+            this._image = jsonMessage.getJSONObject("user").getString("picture");
         } catch (Exception e) {
             Log.d("ERROR", "UNKNOWN ERROR");
         }
@@ -30,4 +32,6 @@ public class Message {
     public String getContent() {
         return (this._content);
     }
+
+    public String getImage() { return (this._image); }
 }

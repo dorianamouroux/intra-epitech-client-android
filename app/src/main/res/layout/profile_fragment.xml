@@ -7,19 +7,23 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/helloText"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Loading"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_gravity="center_vertical"
         android:id="@+id/imageProfile"
-        android:layout_marginTop="40dp"
-        android:src="#000000"
-        android:layout_below="@+id/helloText"
-        android:layout_centerHorizontal="true" />
+        android:src="#aaaaaa"
+        app:civ_border_width="1dp"
+        app:civ_border_color="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/helloText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,14 +33,25 @@
         android:id="@+id/logTime"
         android:layout_below="@+id/imageProfile"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last messages"
+        android:id="@+id/lastMessageText"
+        android:layout_below="@+id/logTime"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="16dp"/>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listMessages"
-        android:layout_below="@+id/logTime"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/lastMessageText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
