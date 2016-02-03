@@ -15,16 +15,23 @@ import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import android.dorianamouroux.fr.epiandroid.R;
 import android.dorianamouroux.fr.epiandroid.IntraAPI;
 import android.dorianamouroux.fr.epiandroid.adapter.ActivityAdapter;
 import android.dorianamouroux.fr.epiandroid.item.Activity;
-import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -35,7 +42,7 @@ import org.json.JSONObject;
 import cz.msebera.android.httpclient.Header;
 
 
-public class ScheduleFragment extends Fragment {
+public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,13 +53,63 @@ public class ScheduleFragment extends Fragment {
     private ListView            _activityList;
     private ActivityAdapter     _adapter;
     private ArrayList<Activity> _listActivity  = new ArrayList<>();
+    private static int          _day = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.schedule_fragment, container, false);
+        ImageButton prevBtn = (ImageButton) view.findViewById(R.id.btnPrevDay);
+        ImageButton nextBtn = (ImageButton) view.findViewById(R.id.btnNextDay);
+        prevBtn.setOnClickListener(this);
+        nextBtn.setOnClickListener(this);
+
         _activityList = (ListView) view.findViewById(R.id.activityList);
 
-        IntraAPI.planning("2016-01-27", "2016-01-27", new JsonHttpResponseHandler() {
+        getSchedule(dateToShow());
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnNextDay :
+                _day++;
+                getSchedule(dateToShow());
+                break;
+            case R.id.btnPrevDay :
+                _day--;
+                getSchedule(dateToShow());
+                break;
+//            case R.id.btnToken :
+//                validateToken(view);
+//                break;
+        }
+    }
+
+    private String dateToShow() {
+        Calendar c = GregorianCalendar.getInstance(Locale.FRANCE);
+        c.add(Calendar.DATE, _day);
+        c.setFirstDayOfWeek(Calendar.MONDAY);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+
+        try {
+            TextView txtDay = (TextView) this.getView().findViewById(R.id.planningDate);
+            String stringDay = df.format(c.getTime()).split("-")[2];
+            String stringMonth = df.format(c.getTime()).split("-")[1];
+            String stringYear = df.format(c.getTime()).split("-")[0];
+
+            String day = stringDay + "/" + stringMonth + "/" + stringYear;
+
+            txtDay.setText(day);
+        } catch (java.lang.NullPointerException e) {
+            Log.v("Schedule", "Error");
+        }
+        return df.format(c.getTime());
+    }
+
+    private void getSchedule(String date) {
+        IntraAPI.planning(date, date, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -70,15 +127,12 @@ public class ScheduleFragment extends Fragment {
                 Log.i("Schedule ", response);
             }
         });
-
-
-//        ListAdapter planningSwipeAdapter = new PlanningSwipeAdapter(rootView.getContext(), R.layout.planning_item, items);
-
-        return view;
     }
 
     private void buildListActivity() {
         JSONObject tmp;
+
+        _listActivity.clear();
 
         for (int i = 0; i < _schedule.length(); ++i) {
             try {
@@ -112,5 +166,4 @@ public class ScheduleFragment extends Fragment {
         _adapter = new ActivityAdapter (getActivity(), R.layout.activity_adapter, _listActivity);
         _activityList.setAdapter(_adapter);
     }
-
 }
