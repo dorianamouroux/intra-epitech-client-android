@@ -22,5 +22,5 @@
     <string name="prev_desc">Prev Button</string>
     <string name="next_desc">Next Button</string>
     <string name="schedule_today">Today</string>
-
+    <string name="valid_token">Valid Token</string>
 </resources>

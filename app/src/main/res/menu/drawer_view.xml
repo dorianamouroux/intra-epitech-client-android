@@ -35,12 +35,4 @@
             android:title="@string/action_grade"/>
     </group>
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/module"
-            android:icon="@drawable/ic_module"
-            android:title="@string/action_module"/>
-
-    </group>
-
 </menu>
